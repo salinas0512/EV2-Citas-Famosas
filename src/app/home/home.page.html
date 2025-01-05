@@ -1,0 +1,34 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/configuracion']">
+        <ion-icon name="settings-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      Citas
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true"> 
+  <div class="contenedor-pantalla">
+    <ion-card class="tarjetaCentrada"> 
+      <ion-card-content> 
+         <p class="fraseAleatoria">{{ fraseAleatoria }}</p> 
+         <p class="autor">{{ autor }}</p> 
+      </ion-card-content> 
+    </ion-card> 
+  </div>
+
+  <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+    <ion-fab-button size="small" *ngIf="permitirBorrado" (click)="eliminarCita()" class="btnEliminarCitas">
+      <ion-icon name="trash-outline" style="font-size: 16px;"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed"> 
+    <ion-fab-button size="small" [routerLink]="['/gestion-citas']" class="btnAgregarCitas">
+      <ion-icon name="add-outline" style="font-size: 16px;"></ion-icon> 
+    </ion-fab-button> 
+  </ion-fab>
+</ion-content>

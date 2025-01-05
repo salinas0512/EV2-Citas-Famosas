@@ -1,0 +1,13 @@
+<ion-list>
+  <ion-item *ngFor="let cita of citas">
+    <ion-label>
+      <h2 class="frase">{{ cita.frase }}</h2>
+      <p class="autor">{{ cita.autor }}</p>
+    </ion-label>
+    <ion-buttons>
+    <ion-button slot="end" class="btnBasurero" (click)="eliminar(cita.id)">
+      <ion-icon name="trash-outline"></ion-icon>
+    </ion-button>
+    </ion-buttons>
+  </ion-item>
+</ion-list>

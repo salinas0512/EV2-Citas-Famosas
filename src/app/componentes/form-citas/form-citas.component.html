@@ -1,0 +1,49 @@
+<ion-card>
+  <ion-card-header>
+    <ion-card-title class="ionTitulo">Crea una nueva cita</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <!-- Primer item: Titulo y Input para la frase -->
+    <ion-item lines="none" [class.invalid]="citaInput.invalid && citaInput.touched">
+      <ion-label class="lblCita">Cita</ion-label>
+      <ion-input
+        required="required"
+        minlength="5"
+        [(ngModel)]="cita.frase"
+        name="frase"
+        #citaInput="ngModel"
+        class="input-cita">
+      </ion-input>
+    </ion-item>
+    <ion-text color="danger" *ngIf="citaInput.invalid && citaInput.touched">
+      <p *ngIf="citaInput.errors?.['required']">La cita es obligatoria.</p>
+      <p *ngIf="citaInput.errors?.['minlength']">La cita debe tener al menos 5 caracteres.</p>
+    </ion-text>
+
+    <!-- Segundo item: Titulo y Input para el autor -->
+    <ion-item lines="none" [class.invalid]="autorInput.invalid && autorInput.touched">
+      <ion-label class="lblAutor">Autor</ion-label>
+      <ion-input
+        required="required"
+        minlength="2"
+        [(ngModel)]="cita.autor"
+        name="autor"
+        placeholder="Mahatma Gandhi"
+        #autorInput="ngModel">
+      </ion-input>
+    </ion-item>
+    <ion-text color="danger" *ngIf="autorInput.invalid && autorInput.touched">
+      <p *ngIf="autorInput.errors?.['required']">El autor es obligatorio.</p>
+      <p *ngIf="autorInput.errors?.['minlength']">El autor debe tener al menos 2 caracteres.</p>
+    </ion-text>
+
+    <ion-button
+      [disabled]=" !autorInput.valid"
+      class="btnAgregar"
+      fill="clear"
+      (click)="agregarCita()">
+      AGREGAR
+      <span class="simbolo">+</span>
+    </ion-button>
+  </ion-card-content>
+</ion-card>
